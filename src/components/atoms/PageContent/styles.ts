@@ -9,4 +9,6 @@ export const Container = styled.div`
     border-radius: ${({ theme }) => theme.borderRadius.sm};
     border: 1px solid ${({ theme }) => theme.colors.primary};
     padding: ${({ theme }) => theme.padding.md};
+    justify-content: center;
+    align-items: center;
 `

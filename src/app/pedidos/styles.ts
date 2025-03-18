@@ -7,4 +7,5 @@ export const Container = styled.div`
     flex-direction: column;
     gap: ${({ theme }) => theme.padding.sm};
     border-radius: ${({ theme }) => theme.borderRadius.sm};
+    overflow: visible;
 `

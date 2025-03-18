@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const InputContainer = styled.div`
     &:focus-within {
-        outline: black solid 1px;
+        border: black solid 1px;
     }
 
     border: 1px solid ${({ theme }) => theme.colors.primary};
@@ -12,6 +12,7 @@ export const InputContainer = styled.div`
     display: flex;
     align-items: center;
     gap: 4px;
+    transition: border 0.2s;
 `
 
 export const Input = styled.input`

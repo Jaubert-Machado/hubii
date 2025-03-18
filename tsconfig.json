@@ -32,6 +32,7 @@
       "@templates/*": ["./src/components/templates/*"],
       "@utils/*": ["./src/utils/*"],
       "@hooks/*": ["./src/hooks/*"],
+      "@assets/*": ["./src/assets/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "styled.d.ts"],

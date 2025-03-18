@@ -3,6 +3,7 @@ import * as S from './styles'
 import OrderCard from '@molecules/OrderCard'
 import { OrderSchema } from '@schemas/data'
 import { OrderStatus } from 'types/order'
+import { getFullDate } from '@utils/data'
 
 export const statusMap: Record<string, OrderStatus> = {
     Pendente: 'pending',
@@ -25,7 +26,9 @@ export default function Orders({ orders }: Props) {
                         costumerName: order.customer.name,
                         status: statusMap[order.status],
                         image: order.items[0].imagem,
-                        deliveryEstimated: order.delivery_estimated,
+                        deliveryEstimated: getFullDate(
+                            order.delivery_estimated
+                        ),
                     }}
                 />
             ))}

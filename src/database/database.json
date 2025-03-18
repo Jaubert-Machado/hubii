@@ -13,7 +13,7 @@
     },
     "items": [
       {
-        "imagem": "https://placehold.co/600",
+        "imagem": "https://placehold.co/600x400?text=Imagem\\ndo\\nProduto",
         "name": "Celular XYZ",
         "quantity": 1,
         "price": 120.50
@@ -54,7 +54,7 @@
       },
       "items": [
         {
-          "imagem": "https://placehold.co/600",
+          "imagem": "https://placehold.co/600x400?text=Imagem\\ndo\\nProduto",
           "name": "Celular XYZ",
           "quantity": 1,
           "price": 120.50
@@ -75,7 +75,7 @@
       },
       "items": [
         {
-          "imagem": "https://placehold.co/600",
+          "imagem": "https://placehold.co/600x400?text=Imagem\\ndo\\nProduto",
           "name": "Fone de Ouvido ABC",
           "quantity": 1,
           "price": 72.30
@@ -116,7 +116,7 @@
       },
       "items": [
         {
-          "imagem": "https://placehold.co/600",
+          "imagem": "https://placehold.co/600x400?text=Imagem\\ndo\\nProduto",
           "name": "Livro XYZ",
           "quantity": 1,
           "price": 50.00

@@ -8,4 +8,5 @@ export const Container = styled.div`
     grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
     grid-auto-rows: minmax(100px, 130px);
     gap: 15px;
+    align-self: flex-start;
 `
