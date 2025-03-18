@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 import { Roboto } from 'next/font/google'
 import ThemeProvider from '@providers/ThemeProvider'
+import QueryProvider from '@providers/QueryProvider'
 
 type Props = {
     children: ReactNode
@@ -14,9 +15,11 @@ const roboto = Roboto({
 export default function RootTemplate({ children }: Props) {
     return (
         <ThemeProvider>
-            <html lang="pt">
-                <body className={`${roboto.variable}`}>{children}</body>
-            </html>
+            <QueryProvider>
+                <html lang="pt">
+                    <body className={`${roboto.variable}`}>{children}</body>
+                </html>
+            </QueryProvider>
         </ThemeProvider>
     )
 }

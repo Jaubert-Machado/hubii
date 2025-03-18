@@ -7,7 +7,8 @@ import { useTheme } from 'styled-components'
 import * as S from './styles'
 import { useOrdersFilter } from '@hooks/useOrdersContext'
 import { OrderStatus } from 'types/order'
-import { ChangeEvent } from 'react'
+import { useCallback } from 'react'
+import { debounce } from '@utils/debounce'
 
 const BADGES: {
     title: string
@@ -28,16 +29,20 @@ const BADGES: {
 ]
 
 export default function OrdersFilter() {
-    const { setFilter, onChange, filter } = useOrdersFilter()
+    const { setOrderStatus, onChange, orderStatus } = useOrdersFilter()
     const theme = useTheme()
 
     function onBadgeClick(status: OrderStatus) {
-        return () => setFilter(status)
+        return () => {
+            if (orderStatus === status) {
+                return setOrderStatus(undefined)
+            }
+
+            setOrderStatus(status)
+        }
     }
 
-    function onInputChange(e: ChangeEvent<HTMLInputElement>) {
-        return () => onChange(e)
-    }
+    const debouncedOnChange = useCallback(debounce(onChange, 300), [onChange])
 
     return (
         <>
@@ -54,14 +59,14 @@ export default function OrdersFilter() {
                         ),
                     },
                 ]}
-                onChange={onInputChange}
+                onChange={(e) => debouncedOnChange(e)}
             />
             <S.FilterBadgeContainer>
                 {BADGES.map((badge) => (
                     <FilterBagde
                         onClick={onBadgeClick(badge.status)}
                         title={badge.title}
-                        isActive={filter === badge.status}
+                        isActive={orderStatus === badge.status}
                         key={badge.title}
                     />
                 ))}

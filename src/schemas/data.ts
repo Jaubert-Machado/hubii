@@ -14,7 +14,7 @@ const ItemSchema = z.object({
 
 const OrderStatusSchema = z.enum(['Pendente', 'Entregue', 'Cancelado'])
 
-export const OrdersSchema = z.array(
+const OrdersData = z.array(
     z.object({
         uuid: z.string(),
         id: z.string(),
@@ -28,4 +28,8 @@ export const OrdersSchema = z.array(
     })
 )
 
-export type OrderSchema = z.infer<typeof OrdersSchema>
+export const OrdersSchema = z.object({
+    orders: OrdersData,
+})
+
+export type OrderSchema = z.infer<typeof OrdersData>

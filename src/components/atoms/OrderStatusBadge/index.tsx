@@ -1,13 +1,6 @@
 import * as S from './styles'
 import { ComponentProps } from 'react'
-
-export const orderStatusMap = {
-    pending: 'Pendente',
-    delivered: 'Entregue',
-    canceled: 'Cancelado',
-} as const
-
-export type OrderStatus = keyof typeof orderStatusMap
+import { OrderStatus, orderStatusMap } from 'types/order'
 
 type Props = {
     status: OrderStatus

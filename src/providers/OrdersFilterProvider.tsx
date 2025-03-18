@@ -4,9 +4,9 @@ import { OrderStatus } from 'types/order'
 
 type OrdersFilterContextType = {
     search: string
-    filter: OrderStatus
+    orderStatus: OrderStatus | undefined
     onChange: (e: ChangeEvent<HTMLInputElement>) => void
-    setFilter: (filter: OrderStatus) => void
+    setOrderStatus: (filter: OrderStatus | undefined) => void
 }
 
 export const OrdersFilterContext = createContext<
@@ -15,7 +15,9 @@ export const OrdersFilterContext = createContext<
 
 export const OrdersFilterProvider = ({ children }: { children: ReactNode }) => {
     const [search, setSearch] = useState<string>('')
-    const [filter, setFilter] = useState<OrderStatus>('delivered')
+    const [orderStatus, setOrderStatus] = useState<OrderStatus | undefined>(
+        undefined
+    )
 
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value)
@@ -24,11 +26,11 @@ export const OrdersFilterProvider = ({ children }: { children: ReactNode }) => {
     const value = useMemo(
         () => ({
             search,
-            filter,
+            orderStatus,
             onChange,
-            setFilter,
+            setOrderStatus,
         }),
-        [search, filter, setFilter, onChange]
+        [search, orderStatus, setOrderStatus, onChange]
     )
 
     return (

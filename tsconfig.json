@@ -25,6 +25,7 @@
       "@providers/*": ["./src/providers/*"],
       "@database/*": ["./src/database/*"],
       "@schemas/*": ["./src/schemas/*"],
+      "types/*": ["./src/types/*"],
       "@atoms/*": ["./src/components/atoms/*"],
       "@molecules/*": ["./src/components/molecules/*"],
       "@organisms/*": ["./src/components/organisms/*"],
