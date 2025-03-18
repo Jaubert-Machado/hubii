@@ -16,9 +16,15 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
     }
     
+    html {
+        height: 100%;
+    }
+    
     body {
         line-height: 1.5;
         -webkit-font-smoothing: antialiased;
+        height: 100%;
+        font-family: Roboto,serif;
     }
     
     img, picture, video, canvas, svg {

@@ -23,8 +23,15 @@
       "@components/*": ["./src/components/*"],
       "@configs/*": ["./src/configs/*"],
       "@providers/*": ["./src/providers/*"],
+      "@database/*": ["./src/database/*"],
+      "@schemas/*": ["./src/schemas/*"],
+      "@types/*": ["./src/types/*"],
+      "@atoms/*": ["./src/components/atoms/*"],
+      "@molecules/*": ["./src/components/molecules/*"],
+      "@organisms/*": ["./src/components/organisms/*"],
+      "@utils/*": ["./src/utils/*"],
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "styled.d.ts"],
   "exclude": ["node_modules"]
 }

@@ -1,0 +1,44 @@
+{
+  "orders": [{
+    "uuid": "6f0945f1-6a83-4dfd-93bb-3242314196",
+    "id": "158924",
+    "status": "Pendente",
+    "total": 120.50,
+    "delivery_cost": 12.00,
+    "shipping_method": "Entrega Expressa",
+    "delivery_estimated": "2025-02-17",
+    "customer": {
+      "name": "João da Silva",
+      "address": "Rua das Palmeiras, 123"
+    },
+    "items": [
+      {
+        "imagem": "https://via.placeholder.com/150",
+        "name": "Celular XYZ",
+        "quantity": 1,
+        "price": 120.50
+      }
+    ]
+  },
+    {
+      "uuid": "6f0945f1-6a83-4dfd-93bb-3242314196",
+      "id": "158925",
+      "status": "Entregue",
+      "total": 72.30,
+      "delivery_cost": 12.00,
+      "shipping_method": "Entrega Normal",
+      "delivery_estimated": "2025-02-17",
+      "customer": {
+        "name": "Maria Oliveira",
+        "address": "Av. Paulista, 987"
+      },
+      "items": [
+        {
+          "imagem": "https://via.placeholder.com/150",
+          "name": "Fone de Ouvido ABC",
+          "quantity": 1,
+          "price": 72.30
+        }
+      ]
+    }]
+}
