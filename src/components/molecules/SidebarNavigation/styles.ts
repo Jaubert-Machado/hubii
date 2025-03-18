@@ -1,15 +1,5 @@
-'use client'
-
 import styled from 'styled-components'
 import Link from '@atoms/Link'
-
-export const Container = styled.div`
-    flex: 1;
-    max-width: 250px;
-    border-radius: ${({ theme }) => theme.borderRadius.sm};
-    padding: ${({ theme }) => theme.padding.sm};
-    border: 1px solid ${({ theme }) => theme.colors.primary};
-`
 
 export const Nav = styled.div`
     display: flex;

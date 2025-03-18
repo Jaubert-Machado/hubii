@@ -1,30 +1,10 @@
-import { Roboto } from 'next/font/google'
 import { ReactNode } from 'react'
-import ThemeProvider from '@providers/ThemeProvider'
-import * as S from './styles'
-import Sidebar from '@organisms/Sidebar'
-import Page from '@atoms/Page'
+import RootTemplate from '@templates/RootTemplate'
 
-const roboto = Roboto({
-    variable: '--font-geist-sans',
-    subsets: ['latin'],
-})
-
-export default function RootLayout({
-    children,
-}: Readonly<{
+type Props = {
     children: ReactNode
-}>) {
-    return (
-        <ThemeProvider>
-            <html lang="pt">
-                <body className={`${roboto.variable}`}>
-                    <S.Layout>
-                        <Sidebar />
-                        <Page>{children}</Page>
-                    </S.Layout>
-                </body>
-            </html>
-        </ThemeProvider>
-    )
+}
+
+export default function RootLayout({ children }: Props) {
+    return <RootTemplate>{children}</RootTemplate>
 }

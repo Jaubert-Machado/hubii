@@ -5,7 +5,9 @@ export const theme: DefaultTheme = {
         primary: '#0070f3',
         secondary: '#ff0080',
         background: '#f0f0f0',
+        placeholder: 'hsl(0, 0%, 70%)',
         text: '#333',
+        white: '#fff',
     },
     gap: {
         xs: '5px',
@@ -34,5 +36,6 @@ export const theme: DefaultTheme = {
         md: '1rem',
         lg: '1.125rem',
         xl: '1.25rem',
+        xxl: '1.5rem',
     },
 }

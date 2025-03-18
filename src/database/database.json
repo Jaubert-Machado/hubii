@@ -13,7 +13,7 @@
     },
     "items": [
       {
-        "imagem": "https://via.placeholder.com/150",
+        "imagem": "https://placehold.co/600",
         "name": "Celular XYZ",
         "quantity": 1,
         "price": 120.50
@@ -34,11 +34,115 @@
       },
       "items": [
         {
-          "imagem": "https://via.placeholder.com/150",
           "name": "Fone de Ouvido ABC",
           "quantity": 1,
           "price": 72.30
         }
       ]
-    }]
+    },
+    {
+      "uuid": "6f0945f1-6a83-4dfd-93bb-3242314196",
+      "id": "158929",
+      "status": "Pendente",
+      "total": 120.50,
+      "delivery_cost": 12.00,
+      "shipping_method": "Entrega Expressa",
+      "delivery_estimated": "2025-02-17",
+      "customer": {
+        "name": "João da Silva",
+        "address": "Rua das Palmeiras, 123"
+      },
+      "items": [
+        {
+          "imagem": "https://placehold.co/600",
+          "name": "Celular XYZ",
+          "quantity": 1,
+          "price": 120.50
+        }
+      ]
+    },
+    {
+      "uuid": "6f0945f1-6a83-4dfd-93bb-3242314196",
+      "id": "158920",
+      "status": "Entregue",
+      "total": 72.30,
+      "delivery_cost": 12.00,
+      "shipping_method": "Entrega Normal",
+      "delivery_estimated": "2025-02-17",
+      "customer": {
+        "name": "Maria Oliveira",
+        "address": "Av. Paulista, 987"
+      },
+      "items": [
+        {
+          "imagem": "https://placehold.co/600",
+          "name": "Fone de Ouvido ABC",
+          "quantity": 1,
+          "price": 72.30
+        }
+      ]
+    },
+    {
+      "uuid": "6f0945f1-6a83-4dfd-93bb-3242314197",
+      "id": "158926",
+      "status": "Cancelado",
+      "total": 200.00,
+      "delivery_cost": 15.00,
+      "shipping_method": "Entrega Rápida",
+      "delivery_estimated": "2025-03-01",
+      "customer": {
+        "name": "Carlos Pereira",
+        "address": "Rua das Flores, 456"
+      },
+      "items": [
+        {
+          "name": "Notebook ABC",
+          "quantity": 1,
+          "price": 200.00
+        }
+      ]
+    },
+    {
+      "uuid": "6f0945f1-6a83-4dfd-93bb-3242314198",
+      "id": "158927",
+      "status": "Entregue",
+      "total": 50.00,
+      "delivery_cost": 10.00,
+      "shipping_method": "Entrega Econômica",
+      "delivery_estimated": "2025-03-05",
+      "customer": {
+        "name": "Ana Souza",
+        "address": "Rua das Acácias, 789"
+      },
+      "items": [
+        {
+          "imagem": "https://placehold.co/600",
+          "name": "Livro XYZ",
+          "quantity": 1,
+          "price": 50.00
+        }
+      ]
+    },
+    {
+      "uuid": "6f0945f1-6a83-4dfd-93bb-3242314199",
+      "id": "158928",
+      "status": "Cancelado",
+      "total": 150.00,
+      "delivery_cost": 20.00,
+      "shipping_method": "Entrega Expressa",
+      "delivery_estimated": "2025-03-10",
+      "customer": {
+        "name": "Pedro Lima",
+        "address": "Rua das Oliveiras, 321"
+      },
+      "items": [
+        {
+          "name": "Tablet DEF",
+          "quantity": 1,
+          "price": 150.00
+        }
+      ]
+    }
+
+  ]
 }

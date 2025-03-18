@@ -6,17 +6,19 @@ const CustomerSchema = z.object({
 })
 
 const ItemSchema = z.object({
-    imagem: z.string().url(),
+    imagem: z.string().url().optional(),
     name: z.string(),
     quantity: z.number(),
     price: z.number(),
 })
 
+const OrderStatusSchema = z.enum(['Pendente', 'Entregue', 'Cancelado'])
+
 export const OrdersSchema = z.array(
     z.object({
         uuid: z.string(),
         id: z.string(),
-        status: z.string(),
+        status: OrderStatusSchema,
         total: z.number(),
         delivery_cost: z.number(),
         shipping_method: z.string(),

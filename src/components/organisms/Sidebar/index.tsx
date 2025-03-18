@@ -2,6 +2,13 @@
 
 import * as S from './styles'
 import UserHeader from '@molecules/UserHeader'
+import SidebarNavigation from '@molecules/SidebarNavigation'
+import { Gear, Package } from '@phosphor-icons/react'
+
+const LINKS = [
+    { href: '/pedidos', label: 'Pedidos', icon: <Package size={18} /> },
+    { href: '/pedidos/1', label: 'Settings', icon: <Gear size={18} /> },
+]
 
 export default function Sidebar() {
     return (
@@ -10,9 +17,9 @@ export default function Sidebar() {
                 user={{
                     name: 'Jaubert Machado',
                     address: 'Rua das Flores, 123',
-                    picture: 'https://avatar.iran.liara.run/public/18',
                 }}
             />
+            <SidebarNavigation links={LINKS} />
         </S.Container>
     )
 }

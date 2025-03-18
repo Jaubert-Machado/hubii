@@ -5,6 +5,6 @@ type Props = {
     children: ReactNode
 }
 
-export default function Page({ children }: Props) {
+export default function PageContent({ children }: Props) {
     return <S.Container>{children}</S.Container>
 }
