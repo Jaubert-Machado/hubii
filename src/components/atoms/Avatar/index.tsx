@@ -11,6 +11,11 @@ export default function Avatar(props: Props) {
     return props.src ? (
         <S.UserAvatar {...props} />
     ) : (
-        <UserCircle size={38} weight="thin" color={theme.colors.primary} />
+        <UserCircle
+            size={38}
+            weight="thin"
+            color={theme.colors.primary}
+            data-testid="avatar-placeholder"
+        />
     )
 }

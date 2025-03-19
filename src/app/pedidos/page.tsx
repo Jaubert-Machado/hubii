@@ -22,6 +22,9 @@ export default function OrdersPage() {
         queryKey: ['orders', orderStatus, debouncedSearch],
     })
 
+    const noData = data && data.length === 0
+    const validData = typeof data !== 'string' && data && data.length > 0
+
     if (typeof data === 'string') {
         toast.error(data)
     }
@@ -32,11 +35,10 @@ export default function OrdersPage() {
             <OrdersFilter />
             <S.Content>
                 {isLoading && <Spinner />}
-                {typeof data !== 'string' && data && data.length > 0 ? (
-                    <Orders orders={data} />
-                ) : (
+                {noData && !isLoading && (
                     <Placeholder message={t('placeholder')} />
                 )}
+                {validData && <Orders orders={data} />}
             </S.Content>
         </S.Container>
     )

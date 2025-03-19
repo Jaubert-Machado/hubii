@@ -10,7 +10,12 @@ export default function ItemImage(props: Props) {
         <S.Image {...props} />
     ) : (
         <S.Placeholder>
-            <Package size={100} weight="duotone" color="white" />
+            <Package
+                size={100}
+                weight="duotone"
+                color="white"
+                data-testid="item-image-placeholder"
+            />
         </S.Placeholder>
     )
 }

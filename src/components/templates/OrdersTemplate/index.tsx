@@ -1,3 +1,5 @@
+'use client'
+
 import * as S from './styles'
 import Sidebar from '@organisms/Sidebar'
 import { ReactNode } from 'react'

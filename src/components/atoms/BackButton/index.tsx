@@ -5,7 +5,7 @@ import { ComponentProps } from 'react'
 import { ArrowLeft } from '@phosphor-icons/react'
 import { useRouter } from 'next/navigation'
 
-type Props = ComponentProps<'button'>
+type Props = Omit<ComponentProps<'button'>, 'onClick'>
 
 export default function BackButton(props: Props) {
     const router = useRouter()
@@ -15,8 +15,8 @@ export default function BackButton(props: Props) {
     }
 
     return (
-        <S.Button onClick={onClick}>
-            <ArrowLeft size={24} />
+        <S.Button onClick={onClick} {...props}>
+            <ArrowLeft size={24} data-testid="back-button-icon" />
         </S.Button>
     )
 }

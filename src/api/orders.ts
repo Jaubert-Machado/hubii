@@ -11,8 +11,6 @@ export const statusMap: Record<string, OrderStatus> = {
 }
 
 function orderNormalize(order: OrderSchema[0]) {
-    console.log(order.delivery_estimated)
-
     return {
         ...order,
         delivery_cost: localizeCurrency(order.delivery_cost),
