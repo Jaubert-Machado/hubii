@@ -1,11 +1,11 @@
 'use client'
-import { ChangeEvent, createContext, ReactNode, useMemo, useState } from 'react'
+import { createContext, ReactNode, useMemo, useState } from 'react'
 import { OrderStatus } from 'types/order'
 
 type OrdersFilterContextType = {
     search: string
     orderStatus: OrderStatus | undefined
-    onChange: (e: ChangeEvent<HTMLInputElement>) => void
+    onSearchChange: (value: string) => void
     setOrderStatus: (filter: OrderStatus | undefined) => void
 }
 
@@ -19,18 +19,18 @@ export const OrdersFilterProvider = ({ children }: { children: ReactNode }) => {
         undefined
     )
 
-    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setSearch(e.target.value)
+    const onSearchChange = (value: string) => {
+        setSearch(value)
     }
 
     const value = useMemo(
         () => ({
             search,
             orderStatus,
-            onChange,
+            onSearchChange,
             setOrderStatus,
         }),
-        [search, orderStatus, setOrderStatus, onChange]
+        [search, orderStatus, setOrderStatus, onSearchChange]
     )
 
     return (

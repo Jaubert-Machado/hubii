@@ -2,7 +2,6 @@
 import * as S from './styles'
 import OrderCard from '@molecules/OrderCard'
 import { OrderSchema } from '@schemas/data'
-import { getFullDate } from '@utils/date'
 import { useRouter } from 'next/navigation'
 import { OrderStatus } from 'types/order'
 
@@ -43,9 +42,7 @@ export default function Orders({ orders }: Props) {
                         costumerName: order.customer.name,
                         status: order.status,
                         image: order.items[0].imagem,
-                        deliveryEstimated: getFullDate(
-                            order.delivery_estimated
-                        ),
+                        deliveryEstimated: order.delivery_estimated,
                     }}
                 />
             ))}

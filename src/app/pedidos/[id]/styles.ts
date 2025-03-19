@@ -33,3 +33,16 @@ export const Label = styled.span`
     color: ${({ theme }) => theme.colors.text};
     font-weight: 300;
 `
+
+export const TitleContainer = styled.div`
+    display: flex;
+    align-items: center;
+    gap: ${({ theme }) => theme.gap.md};
+`
+
+export const PlaceholderContainer = styled.div`
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`

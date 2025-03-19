@@ -1,0 +1,38 @@
+{
+  "OrdersPage": {
+    "title": "Orders",
+    "placeholder": "No orders found",
+    "card": {
+      "customer": "Customer name:",
+      "orderId": "Order number:",
+      "deliveryEstimated": "Delivery date:"
+    }
+  },
+  "Sidebar": {
+    "orders": "Orders",
+    "settings": "Settings"
+  },
+  "OrderDetailsPage": {
+    "title": "Order Details:",
+    "total": "Total",
+    "deliveryCost": "Shipping cost:",
+    "shippingMethod": "Shipping method:",
+    "deliveryEstimated": "Delivery date:",
+    "orderNotFound": "Order not found",
+    "customer": {
+      "name": "Customer name:",
+      "address": "Customer address:"
+    },
+    "itemsList": "Items",
+    "items": {
+      "name": "Item name:",
+      "quantity": "Quantity:",
+      "price": "Price"
+    },
+    "status": {
+      "pending": "Pending",
+      "delivered": "Delivered",
+      "canceled": "Canceled"
+    }
+  }
+}

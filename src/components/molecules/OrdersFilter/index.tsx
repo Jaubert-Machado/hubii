@@ -7,30 +7,32 @@ import { useTheme } from 'styled-components'
 import * as S from './styles'
 import { useOrdersFilter } from '@hooks/useOrdersContext'
 import { OrderStatus } from 'types/order'
-import { useCallback } from 'react'
-import { debounce } from '@utils/debounce'
-
-const BADGES: {
-    title: string
-    status: OrderStatus
-}[] = [
-    {
-        title: 'Entregue',
-        status: 'delivered',
-    },
-    {
-        title: 'Pendente',
-        status: 'pending',
-    },
-    {
-        title: 'Cancelado',
-        status: 'canceled',
-    },
-]
+import { ChangeEvent } from 'react'
+import { useTranslations } from 'next-intl'
 
 export default function OrdersFilter() {
-    const { setOrderStatus, onChange, orderStatus } = useOrdersFilter()
+    const { setOrderStatus, onSearchChange, orderStatus, search } =
+        useOrdersFilter()
     const theme = useTheme()
+    const t = useTranslations('OrderDetailsPage')
+
+    const BADGES: {
+        title: string
+        status: OrderStatus
+    }[] = [
+        {
+            title: t('status.delivered'),
+            status: 'delivered',
+        },
+        {
+            title: t('status.pending'),
+            status: 'pending',
+        },
+        {
+            title: t('status.canceled'),
+            status: 'canceled',
+        },
+    ]
 
     function onBadgeClick(status: OrderStatus) {
         return () => {
@@ -42,11 +44,14 @@ export default function OrdersFilter() {
         }
     }
 
-    const debouncedOnChange = useCallback(debounce(onChange, 300), [onChange])
+    function onSearchInputChange(e: ChangeEvent<HTMLInputElement>) {
+        onSearchChange(e.target.value)
+    }
 
     return (
         <>
             <Input
+                value={search}
                 placeholder="Pesquisar por nome do cliente"
                 icons={[
                     {
@@ -59,7 +64,7 @@ export default function OrdersFilter() {
                         ),
                     },
                 ]}
-                onChange={(e) => debouncedOnChange(e)}
+                onChange={onSearchInputChange}
             />
             <S.FilterBadgeContainer>
                 {BADGES.map((badge) => (

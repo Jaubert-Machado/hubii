@@ -1,16 +1,19 @@
 'use client'
 
 import * as S from './styles'
-import UserHeader from '@molecules/UserHeader'
 import SidebarNavigation from '@molecules/SidebarNavigation'
 import { Gear, Package } from '@phosphor-icons/react'
-
-const LINKS = [
-    { href: '/pedidos', label: 'Pedidos', icon: <Package size={18} /> },
-    { href: '/settings', label: 'Settings', icon: <Gear size={18} /> },
-]
+import UserHeader from '@molecules/UserHeader'
+import { useTranslations } from 'next-intl'
 
 export default function Sidebar() {
+    const t = useTranslations('Sidebar')
+
+    const LINKS = [
+        { href: '/pedidos', label: t('orders'), icon: <Package size={18} /> },
+        { href: '/settings', label: t('settings'), icon: <Gear size={18} /> },
+    ]
+
     return (
         <S.Container>
             <UserHeader

@@ -3,6 +3,8 @@ import { Roboto } from 'next/font/google'
 import ThemeProvider from '@providers/ThemeProvider'
 import QueryProvider from '@providers/QueryProvider'
 import { Toaster } from 'react-hot-toast'
+import { getLocale } from 'next-intl/server'
+import { NextIntlClientProvider } from 'next-intl'
 
 type Props = {
     children: ReactNode
@@ -13,15 +15,19 @@ const roboto = Roboto({
     subsets: ['latin'],
 })
 
-export default function RootTemplate({ children }: Props) {
+export default async function RootTemplate({ children }: Props) {
+    const locale = await getLocale()
+
     return (
-        <ThemeProvider>
+        <NextIntlClientProvider>
             <QueryProvider>
-                <html lang="pt">
-                    <body className={`${roboto.variable}`}>{children}</body>
-                </html>
-                <Toaster position="bottom-right" />
+                <ThemeProvider>
+                    <html lang={locale}>
+                        <body className={`${roboto.variable}`}>{children}</body>
+                    </html>
+                </ThemeProvider>
             </QueryProvider>
-        </ThemeProvider>
+            <Toaster position="bottom-right" />
+        </NextIntlClientProvider>
     )
 }

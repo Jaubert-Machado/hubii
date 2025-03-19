@@ -3,6 +3,9 @@ import PageTitle from '@atoms/PageTitle'
 import { getOrder } from '@/api/orders'
 import InformationRow from '@atoms/InformationRow'
 import ItemCard from '@molecules/ItemCard'
+import BackButton from '@atoms/BackButton'
+import { getTranslations } from 'next-intl/server'
+import Placeholder from '@molecules/Placeholder'
 
 type Params = {
     params: Promise<{ id: string }>
@@ -11,40 +14,48 @@ type Params = {
 export default async function OrderDetails({ params }: Params) {
     const { id } = await params
     const order = await getOrder(id)
+    const t = await getTranslations('OrderDetailsPage')
 
-    if (!order) {
-        return <div>Order not found</div>
+    if (typeof order === 'string' || !order) {
+        return (
+            <S.PlaceholderContainer>
+                <Placeholder message={t('orderNotFound')} />
+            </S.PlaceholderContainer>
+        )
     }
 
     return (
         <S.Container>
-            <PageTitle title={`Detalhes do pedido n.${id}`} />
+            <S.TitleContainer>
+                <BackButton />
+                <PageTitle title={`${t('title')}${id}`} />
+            </S.TitleContainer>
             <S.Content>
                 <S.Badge status={order.status} />
-                <InformationRow label="Total:" value={order?.total} />
+                <InformationRow label={t('total')} value={order?.total} />
                 <InformationRow
-                    label="Custo de envio:"
+                    label={t('deliveryCost')}
                     value={order.delivery_cost}
                 />
                 <InformationRow
-                    label="Método de envio:"
+                    label={t('shippingMethod')}
                     value={order.shipping_method}
                 />
                 <InformationRow
-                    label="Data de entrega:"
+                    label={t('deliveryEstimated')}
                     value={order.delivery_estimated}
                 />
                 <S.Line />
                 <InformationRow
-                    label="Nome do cliente:"
+                    label={t('customer.name')}
                     value={order.customer.name}
                 />
                 <InformationRow
-                    label="Endereço:"
+                    label={t('customer.address')}
                     value={order.customer.address}
                 />
                 <S.Line />
-                <S.Label>Items:</S.Label>
+                <S.Label>{t('itemsList')}</S.Label>
                 {order.items.map((item, index) => (
                     <ItemCard item={item} key={`${item.name}-${index}`} />
                 ))}

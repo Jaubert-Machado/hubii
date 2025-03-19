@@ -5,7 +5,7 @@ type Props = {
     message: string
 }
 
-export default function ListPlaceholder({ message }: Props) {
+export default function Placeholder({ message }: Props) {
     return (
         <S.Container>
             <PlaceholderGraphic />

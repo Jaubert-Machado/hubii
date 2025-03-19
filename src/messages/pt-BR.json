@@ -1,0 +1,38 @@
+{
+  "OrdersPage":{
+    "title":"Pedidos",
+    "placeholder":"Nenhum pedido encontrado",
+    "card":{
+      "customer":"Nome do cliente:",
+      "orderId":"Número do pedido:",
+      "deliveryEstimated":"Data de entrega:"
+    }
+  },
+  "Sidebar":{
+    "orders":"Pedidos",
+    "settings":"Configurações"
+  },
+  "OrderDetailsPage":{
+    "title":"Detalhes do Pedido:",
+    "total":"Total",
+    "deliveryCost":"Custo de envio:",
+    "shippingMethod":"Método de envio:",
+    "deliveryEstimated":"Data de entrega:",
+    "orderNotFound":"Pedido não encontrado",
+    "customer":{
+      "name":"Nome do cliente:",
+      "address":"Endereço do cliente:"
+    },
+    "itemsList":"Itens",
+    "items":{
+      "name":"Nome do item:",
+      "quantity":"Quantidade:",
+      "price":"Preço"
+    },
+    "status":{
+      "pending":"Pendente",
+      "delivered":"Entregue",
+      "canceled":"Cancelado"
+    }
+  }
+}

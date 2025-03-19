@@ -1,7 +1,6 @@
 import { OrderSchema, OrdersSchema } from '@schemas/data'
 import { OrderStatus, orderStatusMap } from 'types/order'
 import { readJsonFile } from '@utils/json'
-import toast from 'react-hot-toast'
 import { getFullDate } from '@utils/date'
 import localizeCurrency from '@utils/currency'
 
@@ -12,6 +11,8 @@ export const statusMap: Record<string, OrderStatus> = {
 }
 
 function orderNormalize(order: OrderSchema[0]) {
+    console.log(order.delivery_estimated)
+
     return {
         ...order,
         delivery_cost: localizeCurrency(order.delivery_cost),
@@ -67,7 +68,7 @@ export async function getOrders(
             })
     } catch (error) {
         if (error instanceof Error) {
-            toast.error(error.message)
+            return error.message
         }
     }
 }
@@ -81,13 +82,13 @@ export async function getOrder(id: string) {
         const order = parsedData.orders.find((order) => order.id === id)
 
         if (!order) {
-            throw new Error('Pedido não encontrado')
+            return 'Pedido não encontrado'
         }
 
         return orderNormalize(order)
     } catch (error) {
         if (error instanceof Error) {
-            toast.error(error.message)
+            return error.message
         }
     }
 }

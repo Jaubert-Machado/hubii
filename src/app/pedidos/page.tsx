@@ -1,34 +1,43 @@
 'use client'
 import * as S from './styles'
-import Page from '@atoms/PageContent'
 import PageTitle from '@atoms/PageTitle'
 import OrdersFilter from '@molecules/OrdersFilter'
 import { useOrdersFilter } from '@hooks/useOrdersContext'
 import { useQuery } from '@tanstack/react-query'
 import { getOrders } from '@/api/orders'
-import ListPlaceholder from '@molecules/ListPlaceholder'
+import Placeholder from '@molecules/Placeholder'
 import Spinner from '@atoms/Spinner'
 import Orders from '@organisms/Orders'
+import { useDebounce } from '@hooks/useDebounce'
+import { useTranslations } from 'next-intl'
+import toast from 'react-hot-toast'
 
 export default function OrdersPage() {
     const { orderStatus, search } = useOrdersFilter()
+    const debouncedSearch = useDebounce(search, 300)
+    const t = useTranslations('OrdersPage')
 
     const { data, isLoading } = useQuery({
-        queryFn: () => getOrders(orderStatus, search),
-        queryKey: ['orders', orderStatus, search],
+        queryFn: () => getOrders(orderStatus, debouncedSearch),
+        queryKey: ['orders', orderStatus, debouncedSearch],
     })
+
+    if (typeof data === 'string') {
+        toast.error(data)
+    }
 
     return (
         <S.Container>
-            <PageTitle title="Pedidos" />
+            <PageTitle title={t('title')} />
             <OrdersFilter />
-            <Page>
-                {data?.length === 0 && (
-                    <ListPlaceholder message="Ainda não há pedidos." />
-                )}
+            <S.Content>
                 {isLoading && <Spinner />}
-                {data && data.length > 0 ? <Orders orders={data} /> : <></>}
-            </Page>
+                {typeof data !== 'string' && data && data.length > 0 ? (
+                    <Orders orders={data} />
+                ) : (
+                    <Placeholder message={t('placeholder')} />
+                )}
+            </S.Content>
         </S.Container>
     )
 }
