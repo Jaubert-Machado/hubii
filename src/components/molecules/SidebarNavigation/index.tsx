@@ -12,7 +12,7 @@ export default function SidebarNavigation({ links }: Props) {
     return (
         <S.Nav>
             {links.map(({ href, label, icon }) => {
-                const isActive = pathname === href
+                const isActive = pathname.includes(href)
 
                 return (
                     <S.NavItem

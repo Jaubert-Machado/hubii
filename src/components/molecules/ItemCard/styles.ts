@@ -1,23 +1,18 @@
 'use client'
 
 import styled from 'styled-components'
-import OrderStatusBadge from '@atoms/OrderStatusBadge'
 
-export const Container = styled.button`
+export const Container = styled.div`
     display: flex;
     border: 1px solid ${({ theme }) => theme.colors.primary};
     border-radius: ${({ theme }) => theme.borderRadius.md};
     padding: ${({ theme }) => theme.padding.sm};
     gap: ${({ theme }) => theme.gap.sm};
     background-color: transparent;
-    cursor: pointer;
+    height: 120px;
 `
 
 export const InformationContainer = styled.div`
     display: flex;
     flex-direction: column;
-`
-
-export const Badge = styled(OrderStatusBadge)`
-    margin-top: auto;
 `
