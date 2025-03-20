@@ -1,22 +1,26 @@
+'use client'
 import * as S from './styles'
 import PageTitle from '@atoms/PageTitle'
 import { getOrder } from '@/api/orders'
 import InformationRow from '@atoms/InformationRow'
 import ItemCard from '@molecules/ItemCard'
 import BackButton from '@atoms/BackButton'
-import { getTranslations } from 'next-intl/server'
 import Placeholder from '@molecules/Placeholder'
+import { useParams } from 'next/navigation'
+import { useQuery } from '@tanstack/react-query'
+import { useTranslations } from 'next-intl'
 
-type Params = {
-    params: Promise<{ id: string }>
-}
+export default function OrderDetails() {
+    const { id } = useParams()
 
-export default async function OrderDetails({ params }: Params) {
-    const { id } = await params
-    const order = await getOrder(id)
-    const t = await getTranslations('OrderDetailsPage')
+    const { data } = useQuery({
+        queryFn: () => getOrder(id as string),
+        queryKey: ['order', id],
+    })
 
-    if (typeof order === 'string' || !order) {
+    const t = useTranslations('OrderDetailsPage')
+
+    if (typeof data === 'string' || !data) {
         return (
             <S.PlaceholderContainer>
                 <Placeholder message={t('orderNotFound')} />
@@ -31,32 +35,32 @@ export default async function OrderDetails({ params }: Params) {
                 <PageTitle title={`${t('title')}${id}`} />
             </S.TitleContainer>
             <S.Content>
-                <S.Badge status={order.status} />
-                <InformationRow label={t('total')} value={order?.total} />
+                <S.Badge status={data.status} />
+                <InformationRow label={t('total')} value={data?.total} />
                 <InformationRow
                     label={t('deliveryCost')}
-                    value={order.delivery_cost}
+                    value={data.delivery_cost}
                 />
                 <InformationRow
                     label={t('shippingMethod')}
-                    value={order.shipping_method}
+                    value={data.shipping_method}
                 />
                 <InformationRow
                     label={t('deliveryEstimated')}
-                    value={order.delivery_estimated}
+                    value={data.delivery_estimated}
                 />
                 <S.Line />
                 <InformationRow
                     label={t('customer.name')}
-                    value={order.customer.name}
+                    value={data.customer.name}
                 />
                 <InformationRow
                     label={t('customer.address')}
-                    value={order.customer.address}
+                    value={data.customer.address}
                 />
                 <S.Line />
                 <S.Label>{t('itemsList')}</S.Label>
-                {order.items.map((item, index) => (
+                {data.items.map((item, index) => (
                     <ItemCard item={item} key={`${item.name}-${index}`} />
                 ))}
             </S.Content>
