@@ -70,6 +70,7 @@ export default function OrdersFilter() {
                 {BADGES.map((badge) => (
                     <FilterBagde
                         onClick={onBadgeClick(badge.status)}
+                        status={badge.status}
                         title={badge.title}
                         isActive={orderStatus === badge.status}
                         key={badge.title}

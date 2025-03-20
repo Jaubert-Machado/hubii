@@ -8,6 +8,11 @@ export const theme: DefaultTheme = {
         placeholder: 'hsl(0, 0%, 70%)',
         text: '#333',
         white: '#fff',
+        badges: {
+            pending: 'hsl(48, 100%, 45%)',
+            delivered: 'hsl(121, 59%, 47%)',
+            canceled: 'hsl(0, 59%, 47%)',
+        },
     },
     gap: {
         xs: '5px',

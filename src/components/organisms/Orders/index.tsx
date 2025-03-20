@@ -1,9 +1,10 @@
 'use client'
 import * as S from './styles'
-import OrderCard from '@molecules/OrderCard'
 import { OrderSchema } from '@schemas/data'
 import { useRouter } from 'next/navigation'
 import { OrderStatus } from 'types/order'
+import { AnimatePresence } from 'motion/react'
+import { animate } from '@utils/animate'
 
 type Orders = Omit<
     OrderSchema[0],
@@ -24,6 +25,27 @@ type Props = {
     orders: Orders[]
 }
 
+const ITEM_VARIANTS = {
+    animate: {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+    },
+    initial: {
+        opacity: 0,
+        scale: 0.9,
+        y: 20,
+    },
+    exit: {
+        opacity: 0,
+        scale: 0.9,
+        y: 20,
+        transition: {
+            duration: 0.1,
+        },
+    },
+}
+
 export default function Orders({ orders }: Props) {
     const router = useRouter()
 
@@ -33,19 +55,29 @@ export default function Orders({ orders }: Props) {
 
     return (
         <S.Container>
-            {orders.map((order) => (
-                <OrderCard
-                    onClick={onOrderCardClick(order.id)}
-                    key={order.id}
-                    order={{
-                        id: order.id,
-                        costumerName: order.customer.name,
-                        status: order.status,
-                        image: order.items[0].imagem,
-                        deliveryEstimated: order.delivery_estimated,
-                    }}
-                />
-            ))}
+            <AnimatePresence>
+                {orders.map((order) => (
+                    <S.AnimatedOrderCard
+                        layout
+                        transition={{
+                            duration: 0.2,
+                            layout: {
+                                duration: 0.2,
+                            },
+                        }}
+                        {...animate(ITEM_VARIANTS)}
+                        onClick={onOrderCardClick(order.id)}
+                        key={order.id}
+                        order={{
+                            id: order.id,
+                            costumerName: order.customer.name,
+                            status: order.status,
+                            image: order.items[0].imagem,
+                            deliveryEstimated: order.delivery_estimated,
+                        }}
+                    />
+                ))}
+            </AnimatePresence>
         </S.Container>
     )
 }

@@ -2,7 +2,7 @@
 
 import styled from 'styled-components'
 
-export const Button = styled.button<{ $isActive: boolean }>`
+export const Button = styled.button<{ $isActive: boolean; $status: string }>`
     &:hover {
         scale: 1;
     }
@@ -13,14 +13,13 @@ export const Button = styled.button<{ $isActive: boolean }>`
 
     cursor: pointer;
     max-width: min-content;
-    background-color: ${({ theme, $isActive }) =>
-        $isActive ? theme.colors.primary : 'transparent'};
-    border: 1px solid ${({ theme }) => theme.colors.primary};
+    background-color: ${({ theme, $status }) => theme.colors.badges[$status]};
+    border: 1px solid ${({ theme, $status }) => theme.colors.badges[$status]};
     border-radius: 20px;
     padding: 4px ${({ theme }) => theme.padding.md};
     font-size: ${({ theme }) => theme.fontSize.sm};
-    color: ${({ theme, $isActive }) =>
-        $isActive ? 'white' : theme.colors.primary};
+    color: white;
     transition: all 0.2s;
     scale: 0.96;
+    opacity: ${({ $isActive }) => ($isActive ? 1 : 0.6)};
 `

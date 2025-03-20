@@ -11,6 +11,20 @@ import Orders from '@organisms/Orders'
 import { useDebounce } from '@hooks/useDebounce'
 import { useTranslations } from 'next-intl'
 import toast from 'react-hot-toast'
+import { animate } from '@utils/animate'
+import { Fragment } from 'react'
+
+const CONTENT_VARIANTS = {
+    initial: {
+        opacity: 0,
+    },
+    animate: {
+        opacity: 1,
+    },
+    exit: {
+        opacity: 0,
+    },
+}
 
 export default function OrdersPage() {
     const { orderStatus, search } = useOrdersFilter()
@@ -30,16 +44,18 @@ export default function OrdersPage() {
     }
 
     return (
-        <S.Container>
-            <PageTitle title={t('title')} />
-            <OrdersFilter />
-            <S.Content>
-                {isLoading && <Spinner />}
-                {noData && !isLoading && (
-                    <Placeholder message={t('placeholder')} />
-                )}
-                {validData && <Orders orders={data} />}
-            </S.Content>
+        <S.Container {...animate(CONTENT_VARIANTS)} key="ordersList">
+            <Fragment key="ordersList">
+                <PageTitle title={t('title')} />
+                <OrdersFilter />
+                <S.Content>
+                    {isLoading && <Spinner />}
+                    {noData && !isLoading && (
+                        <Placeholder message={t('placeholder')} />
+                    )}
+                    {validData && <Orders orders={data} />}
+                </S.Content>
+            </Fragment>
         </S.Container>
     )
 }

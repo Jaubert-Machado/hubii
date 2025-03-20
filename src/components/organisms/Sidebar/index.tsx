@@ -11,7 +11,11 @@ export default function Sidebar() {
 
     const LINKS = [
         { href: '/pedidos', label: t('orders'), icon: <Package size={18} /> },
-        { href: '/settings', label: t('settings'), icon: <Gear size={18} /> },
+        {
+            href: '/configuracoes',
+            label: t('settings'),
+            icon: <Gear size={18} />,
+        },
     ]
 
     return (
@@ -20,6 +24,7 @@ export default function Sidebar() {
                 user={{
                     name: 'Jaubert Machado',
                     address: 'Rua das Flores, 123',
+                    picture: 'https://avatar.iran.liara.run/public/42',
                 }}
             />
             <SidebarNavigation links={LINKS} />

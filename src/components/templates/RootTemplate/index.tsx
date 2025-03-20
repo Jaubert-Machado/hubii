@@ -5,6 +5,9 @@ import QueryProvider from '@providers/QueryProvider'
 import { Toaster } from 'react-hot-toast'
 import { getLocale } from 'next-intl/server'
 import { NextIntlClientProvider } from 'next-intl'
+import Sidebar from '@organisms/Sidebar'
+import { animate } from '@utils/animate'
+import * as S from './styles'
 
 type Props = {
     children: ReactNode
@@ -15,6 +18,15 @@ const roboto = Roboto({
     subsets: ['latin'],
 })
 
+const CONTAINER_VARIANTS = {
+    animate: {
+        opacity: 1,
+    },
+    initial: {
+        opacity: 0,
+    },
+}
+
 export default async function RootTemplate({ children }: Props) {
     const locale = await getLocale()
 
@@ -23,7 +35,17 @@ export default async function RootTemplate({ children }: Props) {
             <QueryProvider>
                 <ThemeProvider>
                     <html lang={locale}>
-                        <body className={`${roboto.variable}`}>{children}</body>
+                        <body className={`${roboto.variable}`}>
+                            <S.Container
+                                {...animate(CONTAINER_VARIANTS)}
+                                transition={{
+                                    duration: 0.4,
+                                }}
+                            >
+                                <Sidebar />
+                                {children}
+                            </S.Container>
+                        </body>
                     </html>
                 </ThemeProvider>
             </QueryProvider>

@@ -9,16 +9,35 @@ import Placeholder from '@molecules/Placeholder'
 import { useParams } from 'next/navigation'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
+import Spinner from '@atoms/Spinner'
+import { animate } from '@utils/animate'
+import { Fragment } from 'react'
+
+const CONTENT_VARIANTS = {
+    initial: {
+        opacity: 0,
+    },
+    animate: {
+        opacity: 1,
+    },
+    exit: {
+        opacity: 0,
+    },
+}
 
 export default function OrderDetails() {
     const { id } = useParams()
 
-    const { data } = useQuery({
+    const { data, isLoading } = useQuery({
         queryFn: () => getOrder(id as string),
         queryKey: ['order', id],
     })
 
     const t = useTranslations('OrderDetailsPage')
+
+    if (isLoading) {
+        return <Spinner />
+    }
 
     if (typeof data === 'string' || !data) {
         return (
@@ -29,41 +48,43 @@ export default function OrderDetails() {
     }
 
     return (
-        <S.Container>
-            <S.TitleContainer>
-                <BackButton />
-                <PageTitle title={`${t('title')}${id}`} />
-            </S.TitleContainer>
-            <S.Content>
-                <S.Badge status={data.status} />
-                <InformationRow label={t('total')} value={data?.total} />
-                <InformationRow
-                    label={t('deliveryCost')}
-                    value={data.delivery_cost}
-                />
-                <InformationRow
-                    label={t('shippingMethod')}
-                    value={data.shipping_method}
-                />
-                <InformationRow
-                    label={t('deliveryEstimated')}
-                    value={data.delivery_estimated}
-                />
-                <S.Line />
-                <InformationRow
-                    label={t('customer.name')}
-                    value={data.customer.name}
-                />
-                <InformationRow
-                    label={t('customer.address')}
-                    value={data.customer.address}
-                />
-                <S.Line />
-                <S.Label>{t('itemsList')}</S.Label>
-                {data.items.map((item, index) => (
-                    <ItemCard item={item} key={`${item.name}-${index}`} />
-                ))}
-            </S.Content>
+        <S.Container {...animate(CONTENT_VARIANTS)} key="orderDetails">
+            <Fragment key="orderDetails">
+                <S.TitleContainer>
+                    <BackButton />
+                    <PageTitle title={`${t('title')}${id}`} />
+                </S.TitleContainer>
+                <S.Content>
+                    <S.Badge status={data.status} />
+                    <InformationRow label={t('total')} value={data?.total} />
+                    <InformationRow
+                        label={t('deliveryCost')}
+                        value={data.delivery_cost}
+                    />
+                    <InformationRow
+                        label={t('shippingMethod')}
+                        value={data.shipping_method}
+                    />
+                    <InformationRow
+                        label={t('deliveryEstimated')}
+                        value={data.delivery_estimated}
+                    />
+                    <S.Line />
+                    <InformationRow
+                        label={t('customer.name')}
+                        value={data.customer.name}
+                    />
+                    <InformationRow
+                        label={t('customer.address')}
+                        value={data.customer.address}
+                    />
+                    <S.Line />
+                    <S.Label>{t('itemsList')}</S.Label>
+                    {data.items.map((item, index) => (
+                        <ItemCard item={item} key={`${item.name}-${index}`} />
+                    ))}
+                </S.Content>
+            </Fragment>
         </S.Container>
     )
 }
