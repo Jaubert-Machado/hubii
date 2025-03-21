@@ -19,7 +19,6 @@
     "deliveryCost": "Shipping cost:",
     "shippingMethod": "Shipping method:",
     "deliveryEstimated": "Delivery date:",
-    "orderNotFound": "Order not found",
     "customer": {
       "name": "Customer name:",
       "address": "Customer address:"
@@ -35,5 +34,9 @@
       "delivered": "Delivered",
       "canceled": "Canceled"
     }
+  },
+  "errors": {
+    "orderNotFound": "Order not found",
+    "serverError": "Server error"
   }
 }

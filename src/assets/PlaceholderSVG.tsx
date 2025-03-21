@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-export default function PlaceholderGraphic() {
+export default function PlaceholderSVG() {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"

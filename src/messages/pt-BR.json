@@ -35,5 +35,9 @@
       "delivered":"Entregue",
       "canceled":"Cancelado"
     }
+  },
+  "errors":{
+    "orderNotFound":"Pedido não encontrado",
+    "serverError":"Erro no servidor"
   }
 }

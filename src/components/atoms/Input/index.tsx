@@ -12,6 +12,8 @@ type Props = {
 
 const Icon = memo(({ icon }: { icon: ReactNode }) => <>{icon}</>)
 
+Icon.displayName = 'Icon'
+
 export default function Input({ icons, ...props }: Props) {
     const inputRef = useRef<HTMLInputElement>(null)
 

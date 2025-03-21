@@ -35,6 +35,7 @@ export default function OrderDetails() {
     })
 
     const t = useTranslations('OrderDetailsPage')
+    const errors = useTranslations('errors')
 
     if (isLoading) {
         return (
@@ -47,7 +48,7 @@ export default function OrderDetails() {
     if (error || !data) {
         return (
             <S.CenteredContainer>
-                <Placeholder message={t('orderNotFound')} />
+                <Placeholder type="empty" message={errors('orderNotFound')} />
             </S.CenteredContainer>
         )
     }

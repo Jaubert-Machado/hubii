@@ -30,10 +30,12 @@ export default function OrdersPage() {
     const { orderStatus, search } = useOrdersFilter()
     const debouncedSearch = useDebounce(search, 300)
     const t = useTranslations('OrdersPage')
+    const errors = useTranslations('errors')
 
     const { data, isLoading, error } = useQuery({
         queryFn: () => OrderService.getOrders(orderStatus, debouncedSearch),
         queryKey: ['orders', orderStatus, debouncedSearch],
+        retry: 1,
     })
 
     const noData = data && data.length === 0
@@ -41,6 +43,15 @@ export default function OrdersPage() {
 
     if (error) {
         toast.error(error.message)
+
+        return (
+            <S.Content>
+                <Placeholder
+                    type="server-error"
+                    message={errors('serverError')}
+                />
+            </S.Content>
+        )
     }
 
     return (
@@ -51,7 +62,7 @@ export default function OrdersPage() {
                 <S.Content>
                     {isLoading && <Spinner />}
                     {noData && !isLoading && (
-                        <Placeholder message={t('placeholder')} />
+                        <Placeholder type="empty" message={t('placeholder')} />
                     )}
                     {validData && <Orders orders={data} />}
                 </S.Content>

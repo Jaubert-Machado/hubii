@@ -1,8 +1,8 @@
 import { OrderSchema, OrdersSchema } from '@schemas/data'
 import { OrderStatus, orderStatusMap } from 'types/order'
-import { readJsonFile } from '@utils/json'
 import { getFullDate } from '@utils/date'
 import localizeCurrency from '@utils/currency'
+import database from '../database/database.json'
 
 export const statusMap: Record<string, OrderStatus> = {
     Pendente: 'pending',
@@ -29,8 +29,7 @@ class OrderService {
         orderStatus: OrderStatus | undefined,
         search: string
     ) {
-        const data = await readJsonFile('./src/database/database.json')
-        const parsedData = OrdersSchema.safeParse(data)
+        const parsedData = OrdersSchema.safeParse(database)
 
         if (!parsedData.success) {
             throw new Error(
@@ -64,13 +63,12 @@ class OrderService {
                     .some((part) => part.startsWith(lowerCaseSearch))
             })
             .map((order) => {
-                return OrderService.orderNormalize(order)
+                return this.orderNormalize(order)
             })
     }
 
     public static async getOrder(id: string) {
-        const data = await readJsonFile('./src/database/database.json')
-        const parsedData = OrdersSchema.safeParse(data)
+        const parsedData = OrdersSchema.safeParse(database)
 
         if (!parsedData.success) {
             throw new Error(
@@ -84,7 +82,7 @@ class OrderService {
             throw new Error('Pedido não encontrado.')
         }
 
-        return OrderService.orderNormalize(order)
+        return this.orderNormalize(order)
     }
 }
 

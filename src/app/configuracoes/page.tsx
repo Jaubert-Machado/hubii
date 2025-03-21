@@ -4,7 +4,7 @@ import * as S from './styles'
 export default function SettingsPage() {
     return (
         <S.Page>
-            <Placeholder message="Página de configurações" />
+            <Placeholder type="empty" message="Página de configurações" />
         </S.Page>
     )
 }
