@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Hubii - Teste Técnico
 
-## Getting Started
+Projeto desenvolvido como teste técnico para a Hubii, com o objetivo de desenvolver uma plataforma de listagem
+de pedidos.
 
-First, run the development server:
+O projeto também encontrasse disponível em deploy, [aqui](https://hubii.vercel.app/).
+
+## Índice
+
+- [Instalação](#instalação)
+- [Uso](#uso)
+- [Scripts Disponíveis](#scripts-disponíveis)
+- [Estrutura de Pastas](#estrutura-de-pastas)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+
+## Instalação
+
+Primeiro, clone o repositório:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Jaubert-Machado/hubii.git
+cd hubii
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Uso
+Depois, instale as dependências:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+O projeto foi desenvolvido utilizando PNPM, mas você pode utilizar NPM ou Yarn.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+# ou
+yarn install
+# ou
+pnpm install
+```
+Abra http://localhost:3000 no seu navegador para ver o resultado.
 
-## Learn More
+## Scripts Disponíveis
 
-To learn more about Next.js, take a look at the following resources:
+No diretório do projeto, você pode rodar:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+`npm run dev`
 
-## Deploy on Vercel
+Roda o aplicativo em modo de desenvolvimento.
+Abra http://localhost:3000 para ver no navegador.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`npm run build`
+
+Compila o aplicativo para produção na pasta build.
+Ele corretamente empacota o React no modo de produção e otimiza a construção para o melhor desempenho.
+
+
+`npm run start`
+
+Roda o aplicativo no modo de produção.
+Certifique-se de rodar npm run build primeiro.
+
+
+`npm run test`
+
+Roda os testes usando Jest.
+
+## Estrutura de Pastas
+
+```
+hubii/
+├── public/
+├── src/
+│   ├── api/
+│   ├── app/
+│   │   ├── configuracoes/
+│   │   └── pedidos/
+│   ├── assets/
+│   ├── components/
+│   │   ├── atoms/
+│   │   ├── molecules/
+│   │   ├── organisms/
+│   │   └── templates/
+│   ├── configs/
+│   ├── database/
+│   ├── hooks/
+│   ├── messages/
+│   ├── providers/
+│   ├── schemas/
+│   ├── types/
+│   ├── utils/
+└── README.md
+```
+
+## Tecnologias Utilizadas
+
+- Next.js
+- React
+- TypeScript
+- Styled-Components
+- Jest
