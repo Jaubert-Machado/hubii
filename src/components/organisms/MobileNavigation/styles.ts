@@ -11,9 +11,10 @@ export const HamgurguerButton = styled.button`
     height: 40px;
     width: 40px;
     border: none;
-    background-color: transparent;
     position: absolute;
     right: 10px;
+    border-radius: 50%;
+    background-color: ${({ theme }) => theme.colors.white};
 `
 export const NavigationContainer = motion.create(styled.div`
     width: 80%;
