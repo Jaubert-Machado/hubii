@@ -13,7 +13,7 @@
     "settings": "Settings"
   },
   "OrderDetailsPage": {
-    "title": "Order Details:",
+    "title": "Order Details",
     "orderId": "Order number:",
     "total": "Total",
     "deliveryCost": "Shipping cost:",

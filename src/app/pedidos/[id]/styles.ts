@@ -41,7 +41,7 @@ export const TitleContainer = styled.div`
     gap: ${({ theme }) => theme.gap.md};
 `
 
-export const PlaceholderContainer = styled.div`
+export const CenteredContainer = styled.div`
     height: 100%;
     display: flex;
     justify-content: center;

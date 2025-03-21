@@ -4,7 +4,7 @@ import PageTitle from '@atoms/PageTitle'
 import OrdersFilter from '@molecules/OrdersFilter'
 import { useOrdersFilter } from '@hooks/useOrdersContext'
 import { useQuery } from '@tanstack/react-query'
-import { getOrders } from '@/api/orders'
+import OrderService from '@/api/orderService'
 import Placeholder from '@molecules/Placeholder'
 import Spinner from '@atoms/Spinner'
 import Orders from '@organisms/Orders'
@@ -31,16 +31,16 @@ export default function OrdersPage() {
     const debouncedSearch = useDebounce(search, 300)
     const t = useTranslations('OrdersPage')
 
-    const { data, isLoading } = useQuery({
-        queryFn: () => getOrders(orderStatus, debouncedSearch),
+    const { data, isLoading, error } = useQuery({
+        queryFn: () => OrderService.getOrders(orderStatus, debouncedSearch),
         queryKey: ['orders', orderStatus, debouncedSearch],
     })
 
     const noData = data && data.length === 0
-    const validData = typeof data !== 'string' && data && data.length > 0
+    const validData = data && data.length > 0
 
-    if (typeof data === 'string') {
-        toast.error(data)
+    if (error) {
+        toast.error(error.message)
     }
 
     return (

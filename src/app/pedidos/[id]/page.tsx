@@ -1,7 +1,6 @@
 'use client'
 import * as S from './styles'
 import PageTitle from '@atoms/PageTitle'
-import { getOrder } from '@/api/orders'
 import InformationRow from '@atoms/InformationRow'
 import ItemCard from '@molecules/ItemCard'
 import BackButton from '@atoms/BackButton'
@@ -12,6 +11,7 @@ import { useTranslations } from 'next-intl'
 import Spinner from '@atoms/Spinner'
 import { animate } from '@utils/animate'
 import { Fragment } from 'react'
+import OrderService from '@/api/orderService'
 
 const CONTENT_VARIANTS = {
     initial: {
@@ -28,22 +28,27 @@ const CONTENT_VARIANTS = {
 export default function OrderDetails() {
     const { id } = useParams()
 
-    const { data, isLoading } = useQuery({
-        queryFn: () => getOrder(id as string),
+    const { data, isLoading, error } = useQuery({
+        queryFn: () => OrderService.getOrder(id as string),
         queryKey: ['order', id],
+        retry: 1,
     })
 
     const t = useTranslations('OrderDetailsPage')
 
     if (isLoading) {
-        return <Spinner />
+        return (
+            <S.CenteredContainer>
+                <Spinner />
+            </S.CenteredContainer>
+        )
     }
 
-    if (typeof data === 'string' || !data) {
+    if (error || !data) {
         return (
-            <S.PlaceholderContainer>
+            <S.CenteredContainer>
                 <Placeholder message={t('orderNotFound')} />
-            </S.PlaceholderContainer>
+            </S.CenteredContainer>
         )
     }
 
