@@ -16,6 +16,8 @@ export const Container = styled.button`
 export const InformationContainer = styled.div`
     display: flex;
     flex-direction: column;
+    height: 100%;
+    flex: 1;
 `
 
 export const Badge = styled(OrderStatusBadge)`

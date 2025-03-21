@@ -7,9 +7,10 @@ import { motion } from 'motion/react'
 
 type Props = {
     links: Link[]
+    onNavigate?: () => void
 }
 
-export default function SidebarNavigation({ links }: Props) {
+export default function SidebarNavigation({ links, onNavigate }: Props) {
     const pathname = usePathname()
 
     return (
@@ -33,6 +34,7 @@ export default function SidebarNavigation({ links }: Props) {
                         href={href}
                         label={label}
                         $isActive={isActive}
+                        onClick={onNavigate}
                     />
                 )
             })}

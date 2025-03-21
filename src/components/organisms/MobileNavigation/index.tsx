@@ -8,6 +8,7 @@ import { AnimatePresence } from 'motion/react'
 import UserHeader from '@molecules/UserHeader'
 import SidebarNavigation from '@molecules/SidebarNavigation'
 import { animate } from '@utils/animate'
+import { useTheme } from 'styled-components'
 
 type Props = {
     user: {
@@ -47,15 +48,20 @@ const BACKGROUND_VARIANTS = {
 
 export default function MobileNavigation({ user, links }: Props) {
     const [isOpen, setIsOpen] = useState(false)
+    const theme = useTheme()
 
     function handleToggle() {
         setIsOpen((prev) => !prev)
     }
 
+    function onNavigate() {
+        setIsOpen(false)
+    }
+
     return (
         <>
             <S.HamgurguerButton onClick={handleToggle}>
-                <Hamburger size={40} />
+                <Hamburger size={40} color={theme.colors.text} />
             </S.HamgurguerButton>
             <AnimatePresence>
                 {isOpen && (
@@ -67,7 +73,10 @@ export default function MobileNavigation({ user, links }: Props) {
                     >
                         <S.NavigationContainer>
                             <UserHeader user={user} />
-                            <SidebarNavigation links={links} />
+                            <SidebarNavigation
+                                links={links}
+                                onNavigate={onNavigate}
+                            />
                         </S.NavigationContainer>
                         <S.BackgroundOverlay
                             onClick={handleToggle}
