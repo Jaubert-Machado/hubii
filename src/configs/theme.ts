@@ -2,12 +2,12 @@ import { DefaultTheme } from 'styled-components'
 
 export const theme: DefaultTheme = {
     colors: {
-        primary: '#0070f3',
-        secondary: '#ff0080',
-        background: '#f0f0f0',
+        primary: 'hsl(255, 36%, 22%)',
+        secondary: 'hsl(146, 85%, 78%)',
+        background: 'hsl(0, 0%, 94%)',
         placeholder: 'hsl(0, 0%, 70%)',
-        text: '#333',
-        white: '#fff',
+        text: 'hsl(0, 0%, 20%)',
+        white: 'hsl(0, 0%, 100%)',
         badges: {
             pending: 'hsl(48, 100%, 45%)',
             delivered: 'hsl(121, 59%, 47%)',

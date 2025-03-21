@@ -18,7 +18,7 @@ export const Button = styled.button<{ $isActive: boolean; $status: string }>`
     border-radius: 20px;
     padding: 4px ${({ theme }) => theme.padding.md};
     font-size: ${({ theme }) => theme.fontSize.sm};
-    color: white;
+    color: ${({ theme }) => theme.colors.white};
     transition: all 0.2s;
     scale: 0.96;
     opacity: ${({ $isActive }) => ($isActive ? 1 : 0.6)};

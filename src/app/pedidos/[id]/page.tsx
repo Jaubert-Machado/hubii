@@ -52,10 +52,11 @@ export default function OrderDetails() {
             <Fragment key="orderDetails">
                 <S.TitleContainer>
                     <BackButton />
-                    <PageTitle title={`${t('title')}${id}`} />
+                    <PageTitle title={`${t('title')}`} />
                 </S.TitleContainer>
                 <S.Content>
                     <S.Badge status={data.status} />
+                    <InformationRow label={t('orderId')} value={data?.id} />
                     <InformationRow label={t('total')} value={data?.total} />
                     <InformationRow
                         label={t('deliveryCost')}

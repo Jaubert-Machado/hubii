@@ -1,33 +1,22 @@
-'use client'
-
 import * as S from './styles'
-import SidebarNavigation from '@molecules/SidebarNavigation'
-import { Gear, Package } from '@phosphor-icons/react'
 import UserHeader from '@molecules/UserHeader'
-import { useTranslations } from 'next-intl'
+import SidebarNavigation from '@molecules/SidebarNavigation'
+import { Link } from '@atoms/Link'
 
-export default function Sidebar() {
-    const t = useTranslations('Sidebar')
+type Props = {
+    user: {
+        name: string
+        address: string
+        picture?: string
+    }
+    links: Link[]
+}
 
-    const LINKS = [
-        { href: '/pedidos', label: t('orders'), icon: <Package size={18} /> },
-        {
-            href: '/configuracoes',
-            label: t('settings'),
-            icon: <Gear size={18} />,
-        },
-    ]
-
+export default function Sidebar({ user, links }: Props) {
     return (
         <S.Container>
-            <UserHeader
-                user={{
-                    name: 'Jaubert Machado',
-                    address: 'Rua das Flores, 123',
-                    picture: 'https://avatar.iran.liara.run/public/42',
-                }}
-            />
-            <SidebarNavigation links={LINKS} />
+            <UserHeader user={user} />
+            <SidebarNavigation links={links} />
         </S.Container>
     )
 }

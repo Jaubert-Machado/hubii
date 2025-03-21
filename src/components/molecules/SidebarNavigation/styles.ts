@@ -9,12 +9,16 @@ export const Nav = styled.div`
 `
 
 export const NavItem = styled(Link)<{ $isActive?: boolean }>`
-    padding: 5px 10px;
+    &:hover {
+        background-color: ${({ $isActive, theme }) =>
+            $isActive ? theme.colors.primary : 'hsl(0, 0%, 90%)'};
+    }
+
+    padding: 5px 15px;
     background-color: ${({ $isActive, theme }) =>
         $isActive ? theme.colors.primary : 'transparent'};
-    border: 1px solid ${({ theme }) => theme.colors.primary};
     color: ${({ $isActive, theme }) =>
-        $isActive ? 'white' : theme.colors.primary};
-    border-radius: 6px;
+        $isActive ? theme.colors.white : theme.colors.primary};
+    border-radius: 20px;
     transition: all 0.3s;
 `

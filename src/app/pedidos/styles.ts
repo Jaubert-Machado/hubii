@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import PageContent from '@atoms/PageContent'
 import { motion } from 'motion/react'
 
-export const Container = motion(styled.div`
+export const Container = motion.create(styled.div`
     flex: 1;
     display: flex;
     flex-direction: column;

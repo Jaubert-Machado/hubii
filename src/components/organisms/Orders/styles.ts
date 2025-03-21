@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import OrderCard from '@molecules/OrderCard'
 import { motion } from 'motion/react'
 
-export const Container = motion(styled.div`
+export const Container = motion.create(styled.div`
     flex: 1;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
@@ -13,4 +13,4 @@ export const Container = motion(styled.div`
     align-self: flex-start;
 `)
 
-export const AnimatedOrderCard = motion(styled(OrderCard)``)
+export const AnimatedOrderCard = motion.create(styled(OrderCard)``)

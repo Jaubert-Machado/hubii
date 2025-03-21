@@ -14,6 +14,7 @@
   },
   "OrderDetailsPage": {
     "title": "Order Details:",
+    "orderId": "Order number:",
     "total": "Total",
     "deliveryCost": "Shipping cost:",
     "shippingMethod": "Shipping method:",

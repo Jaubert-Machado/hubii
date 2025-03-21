@@ -1,10 +1,11 @@
 import { ComponentProps } from 'react'
 import * as S from './styles'
+import { OrderStatus } from 'types/order'
 
 type Props = {
     title: string
     isActive: boolean
-    status: string
+    status: OrderStatus
 } & ComponentProps<'button'>
 
 export default function FilterBagde({

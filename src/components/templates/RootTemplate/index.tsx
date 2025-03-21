@@ -5,9 +5,9 @@ import QueryProvider from '@providers/QueryProvider'
 import { Toaster } from 'react-hot-toast'
 import { getLocale } from 'next-intl/server'
 import { NextIntlClientProvider } from 'next-intl'
-import Sidebar from '@organisms/Sidebar'
 import { animate } from '@utils/animate'
 import * as S from './styles'
+import StyledComponentsRegistry from '@configs/registry'
 
 type Props = {
     children: ReactNode
@@ -31,25 +31,26 @@ export default async function RootTemplate({ children }: Props) {
     const locale = await getLocale()
 
     return (
-        <NextIntlClientProvider>
-            <QueryProvider>
-                <ThemeProvider>
-                    <html lang={locale}>
-                        <body className={`${roboto.variable}`}>
-                            <S.Container
-                                {...animate(CONTAINER_VARIANTS)}
-                                transition={{
-                                    duration: 0.4,
-                                }}
-                            >
-                                <Sidebar />
-                                {children}
-                            </S.Container>
-                        </body>
-                    </html>
-                </ThemeProvider>
-            </QueryProvider>
-            <Toaster position="bottom-right" />
-        </NextIntlClientProvider>
+        <StyledComponentsRegistry>
+            <NextIntlClientProvider>
+                <QueryProvider>
+                    <ThemeProvider>
+                        <html lang={locale}>
+                            <body className={`${roboto.variable}`}>
+                                <S.Container
+                                    {...animate(CONTAINER_VARIANTS)}
+                                    transition={{
+                                        duration: 0.4,
+                                    }}
+                                >
+                                    {children}
+                                </S.Container>
+                            </body>
+                        </html>
+                    </ThemeProvider>
+                </QueryProvider>
+                <Toaster position="bottom-right" />
+            </NextIntlClientProvider>
+        </StyledComponentsRegistry>
     )
 }

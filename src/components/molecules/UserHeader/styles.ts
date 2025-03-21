@@ -3,20 +3,13 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     display: flex;
-    justify-content: space-between;
+    gap: ${({ theme }) => theme.gap.sm};
     align-items: center;
-    border-bottom: 1px solid ${({ theme }) => theme.colors.primary};
+    border-bottom: 1px solid ${({ theme }) => theme.colors.placeholder};
     padding-bottom: 10px;
 `
 
 export const UserInfoContainer = styled.div``
-
-export const UserAvatar = styled.img`
-    background-color: ${({ theme }) => theme.colors.primary};
-    height: 38px;
-    width: 38px;
-    border-radius: 50%;
-`
 
 export const UserName = styled.p`
     font-size: ${({ theme }) => theme.fontSize.sm};

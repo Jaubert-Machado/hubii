@@ -9,10 +9,10 @@ export const Container = motion.create(styled.div`
     padding: ${({ theme }) => theme.padding.md};
 `)
 
-export const Content = styled.div`
+export const SidebarContainer = styled.div`
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    overflow: scroll;
+    max-width: 250px;
+    border-radius: ${({ theme }) => theme.borderRadius.md};
+    padding: ${({ theme }) => theme.padding.sm};
+    border: 1px solid ${({ theme }) => theme.colors.primary};
 `

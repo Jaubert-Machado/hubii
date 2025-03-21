@@ -15,11 +15,11 @@ export default function UserHeader({
 }: Props) {
     return (
         <S.Container>
+            <Avatar src={picture} />
             <S.UserInfoContainer>
                 <S.UserName>{elipser(name, 20)}</S.UserName>
                 <S.UserAddress>{elipser(address, 20)}</S.UserAddress>
             </S.UserInfoContainer>
-            <Avatar src={picture} />
         </S.Container>
     )
 }
