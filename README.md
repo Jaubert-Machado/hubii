@@ -3,7 +3,7 @@
 Projeto desenvolvido como teste técnico para a Hubii, com o objetivo de desenvolver uma plataforma de listagem
 de pedidos.
 
-O projeto também encontrasse disponível em deploy, [aqui](https://hubii.vercel.app/).
+O projeto também encontra-se disponível em deploy, [aqui](https://hubii.vercel.app/).
 
 ## Índice
 
